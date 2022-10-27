@@ -12,7 +12,7 @@ public class CompareByFrequency implements Comparator<Map.Entry<String, Integer>
         int f1 = object1.getValue();
         int f2 = object2.getValue();
         if (f1 < f2) {
-            return -1;   // or switch, this 1 and else if -1 ?? Double check
+            return -1;
         } else if (f1 > f2) {
             return 1;
         } else { // If frequencies are equal, compare keys alphabetically.

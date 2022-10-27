@@ -6,15 +6,12 @@ import com.example.countingwordsrest.utils.WordFrequencyAnalyzer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class WordFrequencyAnalyzerService implements WordFrequencyAnalyzer {
 
-    private CompareByFrequency comparator = new CompareByFrequency();
+    private static CompareByFrequency comparator = new CompareByFrequency();
 
 
 
@@ -22,6 +19,7 @@ public class WordFrequencyAnalyzerService implements WordFrequencyAnalyzer {
         String word = "";
 
         Map<String, Integer> wfMap = new HashMap<String, Integer>();
+
 
 
 
@@ -47,7 +45,6 @@ public class WordFrequencyAnalyzerService implements WordFrequencyAnalyzer {
         return highestFreq;
         // missing return statement ??
     }
-
     // CalculateHighestFrequency should return the highest frequency in the text (several words might actually have this frequency)
 
     @Override
@@ -71,10 +68,22 @@ public class WordFrequencyAnalyzerService implements WordFrequencyAnalyzer {
     @Override
     public List<WordFrequency> calculateMostFrequentNWords(String text, int n) {
 
-        Map<String, Integer> wfMap = getWords(String text);
+        Map<String, Integer> wfMap = getWords(text);
+
+        Collection<Map.Entry<String, Integer>> col = new ArrayList<>(wfMap.entrySet());
 
 
-        return null;
+        List<WordFrequency> mostFredWords = new ArrayList<>();
+
+        List.sort(col, comparator);  // why error??
+
+        if (n > col.size()) {
+
+        }
+
+
+
+        return mostFredWords;
     }
     // CalculateMostFrequentNWords should return a list of the most frequent „n" words in the input text, all the words returned in lower case. If..
 

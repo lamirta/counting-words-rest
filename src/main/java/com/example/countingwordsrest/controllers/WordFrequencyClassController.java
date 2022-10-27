@@ -1,20 +1,49 @@
 package com.example.countingwordsrest.controllers;
 
+import com.example.countingwordsrest.services.WordFrequencyAnalyzerService;
+import com.example.countingwordsrest.utils.WordFrequency;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
 
 @RestController
 public class WordFrequencyClassController {
 
-    // @Autowired
-    // make correct service..
+    @Autowired
+    WordFrequencyAnalyzerService wfaService;
 
 
+    @GetMapping("/")
+    public String message() {
+        return "This is my Counting Words Assessment with REST interface";
+    }
 
-//    @GetMapping("/test")
-//    public int
+    @PostMapping("/highestFrequency")
+    public int calculateHighestFrequency(@RequestBody String text) {
+        return wfaService.calculateHighestFrequency(text);
+    }
+
+
+    @PostMapping("/frequencyForWord")
+    public int calculateFrequencyForWord(@RequestBody String text, String word) {
+        return wfaService.calculateFrequencyForWord(text, word);
+
+        //        return null; throw exception, bad request? // record not found exceptions
+    }
+
+
+    @PostMapping("/mostFrequentNWords")
+    public List<WordFrequency> calculateMostFrequentNWords(@RequestBody String text, int n) {
+
+        return wfaService.calculateMostFrequentNWords(text, n);
+
+//        return null; throw exception, bad request?
+    }
+
 
 
 }
