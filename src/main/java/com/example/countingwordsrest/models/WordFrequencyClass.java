@@ -5,12 +5,16 @@ import com.example.countingwordsrest.utils.WordFrequency;
 //@Entity
 public class WordFrequencyClass implements WordFrequency {
 
-    final String w;
-    final Integer f;
+    private final String w;
+    private final Integer f;
 
     public WordFrequencyClass(String word, Integer frequency) {
         this.w = word;
         this.f = frequency;
+    }
+
+    public WordFrequencyClass(String word) {
+        this.w = word;
     }
 
 

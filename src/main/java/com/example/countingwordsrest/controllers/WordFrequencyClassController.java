@@ -3,6 +3,7 @@ package com.example.countingwordsrest.controllers;
 import com.example.countingwordsrest.services.WordFrequencyAnalyzerService;
 import com.example.countingwordsrest.utils.WordFrequency;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -19,12 +20,16 @@ public class WordFrequencyClassController {
 
     @GetMapping("/")
     public String message() {
-        return "This is my Counting Words Assessment with REST interface";
+        return "This is my Counting Words Assessment with REST interface :)";
     }
 
     @PostMapping("/highestFrequency")
-    public int calculateHighestFrequency(@RequestBody String text) {
-        return wfaService.calculateHighestFrequency(text);
+    public ResponseEntity<Object> calculateHighestFrequency(@RequestBody String text) {
+        try {
+            return ResponseEntity.ok(wfaService.calculateHighestFrequency(text));
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Bad Request Error: wrong input");
+        }
     }
 
 

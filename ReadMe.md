@@ -13,7 +13,10 @@ These are the endpoints that are available in this application:
 
 #### POST `/highestFrequency`
 * Endpoint returns the highest frequency in the text (several words might actually have this frequency)
-* Format: text
+* Format: JSON. Example:
+  `{
+  text: "<input text>"
+  }`
 
 #### POST `/frequencyForWord`
 * Endpoint returns the frequency of the specified word
