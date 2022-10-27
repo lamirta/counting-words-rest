@@ -30,6 +30,7 @@ public class WordFrequencyClassController {
 
     @PostMapping("/frequencyForWord")
     public int calculateFrequencyForWord(@RequestBody String text, String word) {
+
         return wfaService.calculateFrequencyForWord(text, word);
 
         //        return null; throw exception, bad request? // record not found exceptions
