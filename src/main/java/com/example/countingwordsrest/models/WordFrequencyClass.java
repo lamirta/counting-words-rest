@@ -2,6 +2,7 @@ package com.example.countingwordsrest.models;
 
 import com.example.countingwordsrest.utils.WordFrequency;
 
+//@Entity
 public class WordFrequencyClass implements WordFrequency {
 
     final String w;
