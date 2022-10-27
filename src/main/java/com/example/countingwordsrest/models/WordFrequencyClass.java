@@ -24,7 +24,7 @@ public class WordFrequencyClass implements WordFrequency {
         return f;
     }
 
-    //    @Override
+    @Override
     public String toString() {
         return "word = " + w + ", frequency = " + f;
     }

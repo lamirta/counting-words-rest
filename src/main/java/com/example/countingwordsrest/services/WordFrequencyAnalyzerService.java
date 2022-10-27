@@ -1,27 +1,33 @@
-package com.example.countingwordsrest.models;
+package com.example.countingwordsrest.services;
 
 import com.example.countingwordsrest.utils.WordFrequency;
 import com.example.countingwordsrest.models.WordFrequencyClass;
 import com.example.countingwordsrest.utils.WordFrequencyAnalyzer;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Component
-public class WordFrequencyAnalyzerClass implements WordFrequencyAnalyzer {
+@Service
+public class WordFrequencyAnalyzerService implements WordFrequencyAnalyzer {
 
 
     private Map<String, Integer> getWords(String text) {
-        return 0;
+        String word = "";
+
+        Map<String, Integer> wfMap = new HashMap<String, Integer>();
+
+
+
+        return wfMap;
     }
 
     @Override
     public int calculateHighestFrequency(String text) {
 
         int highestFreq = 0;
-        Map<String, Integer> wfMap = getWords(String text);
+        Map<String, Integer> wfMap = getWords(text);
 
         for(every entry e : wfMap) {
             int
@@ -34,16 +40,28 @@ public class WordFrequencyAnalyzerClass implements WordFrequencyAnalyzer {
 
     @Override
     public int calculateFrequencyForWord(String text, String word) {
-        int freqForWord = 0;
+
+        int freqForWord;
+        Map<String, Integer> wfMap = getWords(text);
 
 
-        return freqForWord;
+        if(wfMap.containsValue(word.toLowerCase())) {
+            freqForWord = wfMap.get(word);
+            return freqForWord;
+        } else {
+            return 0;
+        }
+
     }
     // CalculateFrequencyForWord should return the frequency of the specified word
 
 
     @Override
     public List<WordFrequency> calculateMostFrequentNWords(String text, int n) {
+
+        Map<String, Integer> wfMap = getWords(String text);
+
+
         return null;
     }
     // CalculateMostFrequentNWords should return a list of the most frequent „n" words in the input text, all the words returned in lower case. If..
