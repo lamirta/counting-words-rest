@@ -113,7 +113,7 @@ public class WordFrequencyAnalyzerService implements WordFrequencyAnalyzer {
         Collection<Map.Entry<String, Integer>> col = new ArrayList<>(wfMap.entrySet());
 
 
-        List<WordFrequency> mostFredWords = new ArrayList<>();
+        List<WordFrequency> mostFreqWords = new ArrayList<>();
 
 //        List.sort(col, comparator);  // why error??
 
@@ -123,7 +123,7 @@ public class WordFrequencyAnalyzerService implements WordFrequencyAnalyzer {
 
 
 
-        return mostFredWords;
+        return mostFreqWords;
     }
     // CalculateMostFrequentNWords should return a list of the most frequent „n" words in the input text, all the words returned in lower case. If..
 
