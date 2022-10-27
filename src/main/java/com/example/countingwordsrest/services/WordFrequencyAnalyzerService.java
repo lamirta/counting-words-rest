@@ -3,14 +3,19 @@ package com.example.countingwordsrest.services;
 import com.example.countingwordsrest.utils.WordFrequency;
 import com.example.countingwordsrest.models.WordFrequencyClass;
 import com.example.countingwordsrest.utils.WordFrequencyAnalyzer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Service
 public class WordFrequencyAnalyzerService implements WordFrequencyAnalyzer {
+
+    private CompareByFrequency comparator = new CompareByFrequency();
+
 
 
     private Map<String, Integer> getWords(String text) {
@@ -29,11 +34,18 @@ public class WordFrequencyAnalyzerService implements WordFrequencyAnalyzer {
         int highestFreq = 0;
         Map<String, Integer> wfMap = getWords(text);
 
-        for(every entry e : wfMap) {
-            int
-        }
+        Collection<Map.Entry<String, Integer>> col = wfMap.entrySet();
 
+        for(Map.Entry<String, Integer> entry: col) {
+            int freq = entry.getValue();
+            if(freq > highestFreq) {
+                return freq;
+            } else {
+                return highestFreq;
+            }
+        }
         return highestFreq;
+        // missing return statement ??
     }
 
     // CalculateHighestFrequency should return the highest frequency in the text (several words might actually have this frequency)
